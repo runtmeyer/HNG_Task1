@@ -19,9 +19,21 @@ def get_fun_fact(number):
     except requests.RequestException as e:  
         return f"error: {e}"
 
-
+@app.get('/')
+def error_message():
+    return {
+            "number": "alphabet",
+            "error": True
+    }
+    
 @app.get('/api/classify-number')
-def classify_number(number: int = Query()):
+def classify_number(number: int = Query(None)):
+    if number is None:
+        return {
+            "number": "alphabet",
+            "error": True
+        }
+
     try:
         is_prime = is_prime_number(number)
         is_perfect = is_perfect_number(number)
