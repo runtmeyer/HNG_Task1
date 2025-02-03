@@ -5,6 +5,7 @@ def is_perfect_number(n):
     divisors_sum = sum(i for i in range(1, n) if n % i == 0)
     return divisors_sum == n
 
+
 def is_prime_number(n):
     if n < 2:
         return False 
@@ -16,26 +17,28 @@ def is_prime_number(n):
     return True
 
 def digit_sum(n):
-    return sum(int(digit) for digit in str(n))
+    sign = -1 if n < 0 else 1
+    
+    digit_sum_value = sum(int(digit) for digit in str(abs(n)))
+    
+    return sign * digit_sum_value
 
 def is_armstrong(n):
     order = len(str(n))
 
-    # initialize sum
     sum = 0
 
-    # find the sum of the cube of each digit
     temp = n
     while temp > 0:
         digit = temp % 10
         sum += digit ** order
         temp //= 10
 
-    # display the result
     if n == sum:
         return True
     else:
         return False
+
 
 def is_even(n):
     if n%2 == 0:

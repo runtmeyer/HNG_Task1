@@ -29,10 +29,12 @@ def error_message():
 @app.get('/api/classify-number')
 def classify_number(number: int = Query(None)):
     if number is None:
-        return {
+        data={
             "number": "alphabet",
             "error": True
         }
+
+        return data
 
     try:
         is_prime = is_prime_number(number)
