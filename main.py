@@ -22,15 +22,15 @@ def get_fun_fact(number):
 @app.get('/')
 def error_message():
     return {
-            "number": "alphabet",
-            "error": True
+            "error": True,
+            "message": "enter correct url"
     }
     
 @app.get('/api/classify-number')
 def classify_number(number: int = Query(None)):
     if number is None:
         data={
-            "number": "alphabet",
+            "number": number,
             "error": True
         }
 
@@ -57,7 +57,7 @@ def classify_number(number: int = Query(None)):
         raise HTTPException(
             status_code=400,
             detail={
-                "number": "alphabet",
+                "number": number,
                 "error": True
             }
         )
